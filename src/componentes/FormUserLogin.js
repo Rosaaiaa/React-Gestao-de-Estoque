@@ -23,7 +23,7 @@ function FormUserLogin(props) {
           <input type="password" id="senha" name="senha" required />
         </div>
 
-        <input type='button' value='enviar' onClick={() =>login("Renoir")}/>
+        <input type='button' value='enviar' onClick={() =>login("Renoir é legal")}/>
       </form>
     </div>
   );
