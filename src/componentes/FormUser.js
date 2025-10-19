@@ -1,31 +1,92 @@
 import "./FormUser.css";
+import { useState } from 'react';
 
 function FormUser() {
+  const API_URL = "http://localhost:5000";
+
+  const [formData, setFormData] = useState({
+    name: '',
+    cnpj: '',
+    email: '',
+    celular: '',
+    password: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+
+    console.log(formData); 
+
+    try {
+      const response = await fetch(`${API_URL}/user`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+      alert(result.mensagem || result.erro);
+
+    } catch (error) {
+      console.error("Falha ao enviar o formulário:", error);
+      alert("Ocorreu um erro ao conectar com o servidor.");
+    }
+  };
+
   return (
     <div>
-      <form action="/enviar" method="post">
+      <h2>Cadastro de Loja</h2>
+      <form id="form-cliente" onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Nome" 
+          value={formData.name}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="text" 
+          name="cnpj"
+          placeholder="CNPJ" 
+          value={formData.cnpj}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="text" 
+          name="email" 
+          placeholder="Email" 
+          value={formData.email}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="text" 
+          name="celular" 
+          placeholder="Celular" 
+          value={formData.celular}
+          onChange={handleChange}
+          required 
+        />
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Senha" 
+          value={formData.password}
+          onChange={handleChange}
+          required 
+        />
         
-        <div>
-          <label htmlFor="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required />
-        </div>
-
-        <div>
-          <label htmlFor="email">E-mail:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-
-        <div>
-          <label htmlFor="senha">Senha:</label>
-          <input type="password" id="senha" name="senha" required />
-        </div>
-
-        <div>
-          <label htmlFor="idade">Idade:</label>
-          <input type="number" id="idade" name="idade" />
-        </div>
-
-        <button type="submit">Enviar</button>
+        <button type="submit" className="btn-primary">Cadastrar Cliente</button>
       </form>
     </div>
   );
