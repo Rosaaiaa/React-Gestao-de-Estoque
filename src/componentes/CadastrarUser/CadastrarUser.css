@@ -39,7 +39,7 @@ margin: 2rem auto;
   border: none;
   border-radius: 8px;
   padding: 12px 24px;
-  font-size: 1rem;
+  font-size: 24px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -49,4 +49,18 @@ margin: 2rem auto;
 
 .btn-primary:hover {
   background-color: #1E66E5;
+}
+
+.link-redireciona{
+  color: #4A90E2; /* Uma cor de exemplo (azul) */
+  text-decoration: none; /* Remove o sublinhado */
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.link-redireciona:hover {
+  color: #88BFFF; /* Uma cor mais clara ao passar o mouse */
 }

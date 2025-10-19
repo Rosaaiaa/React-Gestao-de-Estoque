@@ -1,15 +1,13 @@
-import "./FormUser.css";
+import { useNavigate } from "react-router-dom";
+import "./AtivarUser.css";
 import { useState } from 'react';
 
-function FormUser() {
+function AtivarUser() {
   const API_URL = "http://localhost:5000";
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
     cnpj: '',
-    email: '',
-    celular: '',
-    password: ''
+    codigo: ''
   });
 
   const handleChange = (e) => {
@@ -26,7 +24,7 @@ function FormUser() {
     console.log(formData); 
 
     try {
-      const response = await fetch(`${API_URL}/user`, {
+      const response = await fetch(`${API_URL}/user/ativacao`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
@@ -35,24 +33,20 @@ function FormUser() {
       const result = await response.json();
       alert(result.mensagem || result.erro);
 
+      if(response.ok){
+        navigate('/')
+      }
+
     } catch (error) {
-      console.error("Falha ao enviar o formulário:", error);
+      console.error("Falha ao ativar usuário:", error);
       alert("Ocorreu um erro ao conectar com o servidor.");
     }
   };
 
   return (
     <div>
-      <h2>Cadastro de Loja</h2>
+      <h2>Insira o Código recebido no WhatsApp!</h2>
       <form id="form-cliente" onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="name" 
-          placeholder="Nome" 
-          value={formData.name}
-          onChange={handleChange}
-          required 
-        />
         <input 
           type="text" 
           name="cnpj"
@@ -63,33 +57,17 @@ function FormUser() {
         />
         <input 
           type="text" 
-          name="email" 
-          placeholder="Email" 
-          value={formData.email}
+          name="codigo" 
+          placeholder="Código" 
+          value={formData.codigo}
           onChange={handleChange}
           required 
         />
-        <input 
-          type="text" 
-          name="celular" 
-          placeholder="Celular" 
-          value={formData.celular}
-          onChange={handleChange}
-          required 
-        />
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Senha" 
-          value={formData.password}
-          onChange={handleChange}
-          required 
-        />
-        
-        <button type="submit" className="btn-primary">Cadastrar Cliente</button>
+        <button type="submit" className="btn-primary">Ativar</button>
+
       </form>
     </div>
   );
 }
 
-export default FormUser;
+export default AtivarUser;
