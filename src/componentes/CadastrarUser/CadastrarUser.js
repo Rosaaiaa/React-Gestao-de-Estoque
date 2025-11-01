@@ -7,26 +7,21 @@ function CadastrarUser() {
   const API_URL = "http://localhost:5000";
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: '',
-    cnpj: '',
-    email: '',
-    celular: '',
-    password: ''
-  });
+  const [name, setName] = useState('');
+  const [cnpj, setCnpj] = useState('');
+  const [email, setEmail] = useState('');
+  const [celular, setCelular] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  async function enviar_cadastro() {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
-
-    console.log(formData); 
+    const formData = {
+    "name": name,
+    "cnpj": cnpj,
+    "email": email,
+    "celular": celular,
+    "password": password
+    }
 
     try {
       const response = await fetch(`${API_URL}/user`, {
@@ -42,11 +37,16 @@ function CadastrarUser() {
         navigate('/ativar')
       }
 
-    } catch (error) {
-      console.error("Falha ao enviar o formulário:", error);
-      alert("Ocorreu um erro ao conectar com o servidor.");
+      } catch (error) {
+        console.error("Falha ao enviar o formulário:", error);
+        alert("Ocorreu um erro ao conectar com o servidor.");
     }
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    enviar_cadastro();
+  }
 
   return (
     <div>
@@ -56,40 +56,35 @@ function CadastrarUser() {
           type="text" 
           name="name" 
           placeholder="Nome" 
-          value={formData.name}
-          onChange={handleChange}
+          onChange={(e)=> setName(e.target.value)}
           required 
         />
         <input 
           type="text" 
           name="cnpj"
           placeholder="CNPJ" 
-          value={formData.cnpj}
-          onChange={handleChange}
+          onChange={(e)=> setCnpj(e.target.value)}
           required 
         />
         <input 
           type="text" 
           name="email" 
           placeholder="Email" 
-          value={formData.email}
-          onChange={handleChange}
+          onChange={(e)=> setEmail(e.target.value)}
           required 
         />
         <input 
           type="text" 
           name="celular" 
           placeholder="Celular" 
-          value={formData.celular}
-          onChange={handleChange}
+          onChange={(e)=> setCelular(e.target.value)}
           required 
         />
         <input 
           type="password" 
           name="password" 
           placeholder="Senha" 
-          value={formData.password}
-          onChange={handleChange}
+          onChange={(e)=> setPassword(e.target.value)}
           required 
         />
         
@@ -100,6 +95,5 @@ function CadastrarUser() {
       </form>
     </div>
   );
-}
-
+};
 export default CadastrarUser;

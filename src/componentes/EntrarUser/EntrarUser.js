@@ -31,7 +31,7 @@ function EntrarUser() {
       });
 
       if(response.ok){
-        alert("Acho que deu certo")
+        alert("Login realizaddo com sucesso!!!")
       }
 
       const result = await response.json();

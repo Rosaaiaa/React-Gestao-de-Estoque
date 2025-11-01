@@ -5,23 +5,16 @@ import { useState } from 'react';
 function AtivarUser() {
   const API_URL = "http://localhost:5000";
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    cnpj: '',
-    codigo: ''
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+  const [cnpj, setCnpj] = useState('');
+  const [codigo, setCodigo] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
+  async function enviar_ativacao(){
 
-    console.log(formData); 
+    const formData = {
+        "cnpj": cnpj,
+        "codigo": codigo
+    }
 
     try {
       const response = await fetch(`${API_URL}/user/ativacao`, {
@@ -43,6 +36,11 @@ function AtivarUser() {
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    enviar_ativacao();
+  }
+
   return (
     <div>
       <h2>Insira o Código recebido no WhatsApp!</h2>
@@ -51,16 +49,14 @@ function AtivarUser() {
           type="text" 
           name="cnpj"
           placeholder="CNPJ" 
-          value={formData.cnpj}
-          onChange={handleChange}
+          onChange={(e)=> setCnpj(e.target.value)}
           required 
         />
         <input 
           type="text" 
           name="codigo" 
           placeholder="Código" 
-          value={formData.codigo}
-          onChange={handleChange}
+          onChange={(e)=> setCodigo(e.target.value)}
           required 
         />
         <button type="submit" className="btn-primary">Ativar</button>
@@ -68,6 +64,6 @@ function AtivarUser() {
       </form>
     </div>
   );
-}
+};
 
 export default AtivarUser;

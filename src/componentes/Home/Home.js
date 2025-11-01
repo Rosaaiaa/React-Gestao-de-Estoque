@@ -1,8 +1,11 @@
+import Header from '../Header/Header'
+
 function Home () {
     return (
-        <div>
-            <h2> dis is Home</h2>
-        </div>
+        <>
+        <Header></Header>
+            <h2>dis is Home</h2>
+        </>
     )
 }
 

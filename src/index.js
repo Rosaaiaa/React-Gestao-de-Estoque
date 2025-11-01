@@ -1,15 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+
+import Home from './componentes/Home/Home'
+import CadastrarUser from './componentes/CadastrarUser/CadastrarUser';
+import EntrarUser from './componentes/EntrarUser/EntrarUser';
+import AtivarUser from './componentes/AtivarUser/AtivarUser';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/cadastrar' element={<CadastrarUser/>}/>
+          <Route path='/entrar' element={<EntrarUser/>}/>
+          <Route path='/ativar' element={<AtivarUser/>}/>
+        </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
