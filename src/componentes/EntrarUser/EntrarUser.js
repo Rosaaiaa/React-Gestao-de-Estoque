@@ -5,43 +5,41 @@ import { useState } from 'react';
 function EntrarUser() {
   const API_URL = "http://localhost:5000";
 
-  const [formData, setFormData] = useState({
-    cnpj: '',
-    password: ''
-  });
+  const [cnpj, setCnpj] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+  async function enviar_dados(){
+
+    const formData = {
+      "cnpj": cnpj,
+      "password": password
+    }
+
+      try {
+        const response = await fetch(`${API_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+
+        if(response.ok){
+          alert("Login realizaddo com sucesso!!!")
+        }
+
+        const result = await response.json();
+        alert(result.mensagem || result.erro);
+
+      } catch (error) {
+        console.error("Falha ao enviar o formulário:", error);
+        alert("Ocorreu um erro ao conectar com o servidor.");
+      }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); 
-
-    console.log(formData); 
-
-    try {
-      const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-
-      if(response.ok){
-        alert("Login realizaddo com sucesso!!!")
-      }
-
-      const result = await response.json();
-      alert(result.mensagem || result.erro);
-
-    } catch (error) {
-      console.error("Falha ao enviar o formulário:", error);
-      alert("Ocorreu um erro ao conectar com o servidor.");
-    }
-  };
+    e.preventDefault();
+    enviar_dados();
+  }
+  
 
   return (
     <div>
@@ -51,16 +49,14 @@ function EntrarUser() {
           type="text" 
           name="cnpj"
           placeholder="CNPJ" 
-          value={formData.cnpj}
-          onChange={handleChange}
+          onChange={(e)=> setCnpj(e.target.value)}
           required 
         />
         <input 
           type="password" 
           name="password" 
           placeholder="Senha" 
-          value={formData.password}
-          onChange={handleChange}
+          onChange={(e)=> setPassword(e.target.value)}
           required 
         />
         <button type="submit" className="btn-primary">Entrar</button>
@@ -70,6 +66,6 @@ function EntrarUser() {
       </form>
     </div>
   );
-}
+};
 
 export default EntrarUser;
