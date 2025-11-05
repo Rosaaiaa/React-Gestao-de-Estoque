@@ -1,10 +1,12 @@
+import "./Home.css";
 import Header from '../Header/Header'
+import fundo from '../../assets/Home imagem.png'
 
 function Home () {
     return (
         <>
         <Header></Header>
-            <h2>dis is Home</h2>
+        <img src={fundo} alt="Logo da empresa" className="fundo" />
         </>
     )
 }

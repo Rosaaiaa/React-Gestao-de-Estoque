@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./EntrarUser.css";
 import { useState } from 'react';
 
@@ -7,6 +8,7 @@ function EntrarUser() {
 
   const [cnpj, setCnpj] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); 
 
   async function enviar_dados(){
 
@@ -14,6 +16,7 @@ function EntrarUser() {
       "cnpj": cnpj,
       "password": password
     }
+    
 
       try {
         const response = await fetch(`${API_URL}/login`, {
@@ -24,10 +27,12 @@ function EntrarUser() {
 
         if(response.ok){
           alert("Login realizaddo com sucesso!!!")
+          navigate('/')
         }
 
         const result = await response.json();
         alert(result.mensagem || result.erro);
+        console.log(result);
 
       } catch (error) {
         console.error("Falha ao enviar o formulário:", error);

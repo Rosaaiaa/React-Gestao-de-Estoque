@@ -1,7 +1,9 @@
 import "./Header.css";
-import logo from '../../assets/Getstock.png'
+import { Link } from "react-router-dom";
+import logo from '../../assets/Getstock.png';
 
 function Header() {
+
     return(
       <header className="site-header">
       
@@ -12,8 +14,8 @@ function Header() {
           </div>
           
           <nav className="button-nav">
-            <button className="auth-button login">Entrar</button>
-            <button className="auth-button signup">Cadastrar</button>
+            <Link to="/entrar" className="auth-button login">Entrar</Link>
+            <Link to="/cadastrar" className="auth-button signup">Cadastrar</Link>
           </nav>
 
         </div>

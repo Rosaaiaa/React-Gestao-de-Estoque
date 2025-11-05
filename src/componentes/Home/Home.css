@@ -1,0 +1,15 @@
+/* Em ./Home.css */
+
+.fundo {
+  position: fixed; 
+  top: 190px;
+  left: 0;
+
+  width: 100vw; 
+  height: 100vh; 
+
+
+  object-fit: cover;
+
+  z-index: -1; 
+}

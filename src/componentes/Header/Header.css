@@ -1,63 +1,66 @@
-/* Define a barra principal do cabeçalho */
 .site-header {
-  background-color: #200000; /* Cor de fundo branca */
-  padding: 10px 20px; /* Espaçamento interno (vertical, horizontal) */
-  border-bottom: 1px solid #43090900; /* Linha sutil na parte de baixo */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra leve */
+  background-color: #fff9f9;
+  padding: 20px 20px;
+  border-bottom: 1px solid #43090900; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
 }
 
-/* Controla o layout interno (logo de um lado, botões do outro) */
+
 .header-container {
-  max-width: 1200px; /* Largura máxima para o conteúdo */
-  margin: 0 auto; /* Centraliza o container na página */
-  
-  /* A mágica do layout! */
+  max-width: 1200px;
+  margin: 0 auto; 
   display: flex;
-  justify-content: space-between; /* Joga os filhos para os cantos opostos */
-  align-items: center; /* Alinha tudo verticalmente ao centro */
+  justify-content: space-between; 
+  align-items: center; 
 }
 
-/* Estilo do logo */
 .logo {
-  height: 40px; /* Defina a altura desejada para seu logo */
-  width: auto; /* A largura se ajusta automaticamente */
+  height: 40px; 
+  width: auto; 
 }
 
-/* Container dos botões */
+
 .button-nav {
   display: flex;
-  gap: 15px; /* Cria um espaço de 15px entre os botões */
+  gap: 15px;
 }
 
-/* Estilo base dos botões */
 .auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 16px;
   border: 1px solid transparent;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 19px;
+  
+  font-size: 16px; 
+ 
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease-in-out; /* Efeito suave ao passar o mouse */
+  transition: all 0.2s ease-in-out; 
+
+  text-decoration: none; 
 }
 
-/* Estilo específico do botão 'Entrar' (vazado) */
 .auth-button.login {
-  background-color: #200000;
-  border-color: #007bff; /* Azul (exemplo) */
-  color: #007bff;
+  background-color: #ffffff;
+  border-color: #ff6767;
+  color: #ff6767;
 }
 
 .auth-button.login:hover {
-  background-color: #2b0000; /* Fundo levemente azulado ao passar o mouse */
+  background-color: #b8001f; 
+  color: #fff0f0; 
 }
 
-/* Estilo específico do botão 'Cadastrar' (preenchido) */
+
 .auth-button.signup {
-  background-color: #007bff; /* Azul (exemplo) */
-  color: #ffffff;
-  border-color: #007bff;
+  background-color: #b8001f;
+  color: #fff0f0;
+  border-color: #ff6767;
 }
 
 .auth-button.signup:hover {
-  opacity: 0.85; /* Leve transparência ao passar o mouse */
+  background-color: #fff0f0; 
+  color: #b8001f;
 }
