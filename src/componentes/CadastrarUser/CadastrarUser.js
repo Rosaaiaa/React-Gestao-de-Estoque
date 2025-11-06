@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./CadastrarUser.css";
 import { useState } from 'react';
+import Header from '../Header/Header';
 
 function CadastrarUser() {
   const API_URL = "http://localhost:5000";
@@ -50,6 +51,7 @@ function CadastrarUser() {
 
   return (
     <div>
+      <Header />
       <h2>Cadastro de Loja</h2>
       <form id="form-cliente" onSubmit={handleSubmit}>
         <input 

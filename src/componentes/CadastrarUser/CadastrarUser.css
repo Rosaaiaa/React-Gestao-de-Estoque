@@ -1,66 +1,85 @@
+
+/* Container principal da página de login */
+.entrar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Alinha no topo */
+  min-height: 100vh;
+  padding-top: 60px; /* Espaço suficiente abaixo do header */
+  background-color: #fff9f9;
+}
+
+
+/* Espaço entre o header fixo e o formulário */
+h2 {
+  margin-top: 100px; 
+  color: #b8001f;
+  font-weight: 700;
+}
+
+/* Card do formulário */
 #form-cliente {
-  background-color: #1A2233;
-  padding: 2.5rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  width: 100%;
-  max-width: 450px;
-  text-align: center;
-/* Adicionado para centralizar, caso esteja dentro de um body/div com flex */
-margin: 2rem auto; 
+  background-color: #b8001f; /* mesma cor principal */
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 340px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Efeito hover suave no card */
+form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(184, 0, 31, 0.4);
+}
+
+/* Inputs */
 #form-cliente input {
-  width: 100%;
-  background-color: #2979FF;
-  border: none;
-  border-radius: 25px;
-  padding: 14px 20px;
-  margin-bottom: 1rem;
-  color: white;
-  font-size: 1rem;
-  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #ff6767;
+  outline: none;
+  background-color: #fff;
+  color: #b8001f;
+  font-weight: 500;
 }
-
 
 #form-cliente input::placeholder {
-  color: #FFFFFF;
-  opacity: 0.8;
+  color: #b8001f;
+  opacity: 0.7;
 }
 
-#form-cliente input:focus {
-  outline: 2px solid #5A9BFF;
-}
-
-
+/* Botão de login */
 .btn-primary {
-  background-color: #2979FF;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 24px;
-  font-weight: 600;
+  background-color: #ffffff;
+  color: #b8001f;
+  padding: 12px;
+  border: 2px solid #ff6767;
+  border-radius: 10px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  margin-top: 1rem;
+  transition: 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #1E66E5;
+  background-color: #b8001fa0;
+  color: #fff0f0;
 }
 
-.link-redireciona{
-  color: #4A90E2; /* Uma cor de exemplo (azul) */
-  text-decoration: none; /* Remove o sublinhado */
-  font-weight: 600;
-  font-size: 15px;
-  transition: color 0.3s ease;
-  margin-top: 20px;
-  display: inline-block;
+/* Link de cadastro */
+.link-redireciona {
+  text-align: center;
+  color: #fff0f0;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .link-redireciona:hover {
-  color: #88BFFF; /* Uma cor mais clara ao passar o mouse */
+  text-decoration: underline;
+  color: #ffbaba;
 }

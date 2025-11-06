@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./EntrarUser.css";
 import { useState } from 'react';
+import Header from '../Header/Header';
+import loginimage from '../../assets/LoginImage.png';
 
 function EntrarUser() {
   const API_URL = "http://localhost:5000";
@@ -48,6 +50,7 @@ function EntrarUser() {
 
   return (
     <div>
+       <Header />
       <h2>Entrar</h2>
       <form id="form-cliente" onSubmit={handleSubmit}>
         <input 
