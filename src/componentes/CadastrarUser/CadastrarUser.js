@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Header from '../Header/Header';
 
 function CadastrarUser() {
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
   const navigate = useNavigate();
 
   const [name, setName] = useState('');

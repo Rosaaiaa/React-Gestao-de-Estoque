@@ -3,7 +3,7 @@ import "./AtivarUser.css";
 import { useState } from 'react';
 
 function AtivarUser() {
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
   const navigate = useNavigate();
 
   const [cnpj, setCnpj] = useState('');

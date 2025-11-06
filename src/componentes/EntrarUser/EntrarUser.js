@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import loginimage from '../../assets/LoginImage.png';
 
 function EntrarUser() {
-  const API_URL = "http://localhost:5000";
+  const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
 
   const [cnpj, setCnpj] = useState('');
   const [password, setPassword] = useState('');
