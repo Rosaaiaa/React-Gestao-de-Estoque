@@ -9,6 +9,7 @@ import Home from './componentes/Home/Home'
 import CadastrarUser from './componentes/CadastrarUser/CadastrarUser';
 import EntrarUser from './componentes/EntrarUser/EntrarUser';
 import AtivarUser from './componentes/AtivarUser/AtivarUser';
+import PageAdmin from './componentes/PageAdmin/PageAdmin';
 
 
 
@@ -21,6 +22,7 @@ root.render(
           <Route path='/cadastrar' element={<CadastrarUser/>}/>
           <Route path='/entrar' element={<EntrarUser/>}/>
           <Route path='/ativar' element={<AtivarUser/>}/>
+          <Route path='/admin' element={<PageAdmin/>}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
