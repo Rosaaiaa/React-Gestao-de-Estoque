@@ -34,6 +34,11 @@ function EntrarUser() {
 
         const result = await response.json();
         alert(result.mensagem || result.erro);
+
+        if(result.access_token) {
+          localStorage.setItem('authToken', result.access_token);
+        }
+
         console.log(result);
 
       } catch (error) {
