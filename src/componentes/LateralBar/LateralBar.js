@@ -12,7 +12,7 @@ function LateralBar(){
                     <h3>Produto</h3>
                     <ul className="submenu">
                         <li><a href="/produtos">Ver Produtos</a></li>
-                        <li><a href="/cadastroproduto">Cadastrar Produto</a></li>
+                        <li><a href="/cadastro-produto">Cadastrar Produto</a></li>
                     </ul>
                 </li>
 
@@ -20,7 +20,7 @@ function LateralBar(){
                     <h3>Vendas</h3>
                     <ul className="submenu">
                         <li><a href="/vendas">Ver Vendas</a></li>
-                        <li><a href="/cadastroproduto">Realizar Venda</a></li>
+                        <li><a href="/cadastro-produto">Realizar Venda</a></li>
                     </ul>
                 </li>
             </ul>
