@@ -13,18 +13,20 @@ function CadastrarUser() {
   const [email, setEmail] = useState('');
   const [celular, setCelular] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   async function enviar_cadastro() {
-
     const formData = {
-    "name": name,
-    "cnpj": cnpj,
-    "email": email,
-    "celular": celular,
-    "password": password
-    }
+      "name": name,
+      "cnpj": cnpj,
+      "email": email,
+      "celular": celular,
+      "password": password
+    };
 
     try {
+      setIsLoading(true);
+
       const response = await fetch(`${API_URL}/user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,15 +36,17 @@ function CadastrarUser() {
       const result = await response.json();
       alert(result.mensagem || result.erro);
 
-      if(response.ok){
-        navigate('/ativar')
+      if (response.ok) {
+        navigate('/ativar');
       }
 
-      } catch (error) {
-        console.error("Falha ao enviar o formulário:", error);
-        alert("Ocorreu um erro ao conectar com o servidor.");
+    } catch (error) {
+      console.error("Falha ao enviar o formulário:", error);
+      alert("Ocorreu um erro ao conectar com o servidor.");
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,50 +56,61 @@ function CadastrarUser() {
   return (
     <div>
       <Header />
-      <h2>Cadastro de Loja</h2>
-      <form id="form-cliente" onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          name="name" 
-          placeholder="Nome" 
-          onChange={(e)=> setName(e.target.value)}
-          required 
-        />
-        <input 
-          type="text" 
-          name="cnpj"
-          placeholder="CNPJ" 
-          onChange={(e)=> setCnpj(e.target.value)}
-          required 
-        />
-        <input 
-          type="text" 
-          name="email" 
-          placeholder="Email" 
-          onChange={(e)=> setEmail(e.target.value)}
-          required 
-        />
-        <input 
-          type="text" 
-          name="celular" 
-          placeholder="Celular" 
-          onChange={(e)=> setCelular(e.target.value)}
-          required 
-        />
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Senha" 
-          onChange={(e)=> setPassword(e.target.value)}
-          required 
-        />
-        
-        <button type="submit" className="btn-primary">Cadastrar</button>
+      <div className="entrar-page">
+        <form id="form-cliente-cadastrar" onSubmit={handleSubmit}>
+          <div className="form-header">
+            <h2>Cadastro de Loja</h2>
+          </div>
 
-        <Link to="/entrar" className="link-redireciona">Entrar</Link>
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Nome" 
+            onChange={(e)=> setName(e.target.value)}
+            required 
+          />
+          <input 
+            type="text" 
+            name="cnpj"
+            placeholder="CNPJ" 
+            onChange={(e)=> setCnpj(e.target.value)}
+            required 
+          />
+          <input 
+            type="text" 
+            name="email" 
+            placeholder="Email" 
+            onChange={(e)=> setEmail(e.target.value)}
+            required 
+          />
+          <input 
+            type="text" 
+            name="celular" 
+            placeholder="Celular" 
+            onChange={(e)=> setCelular(e.target.value)}
+            required 
+          />
+          <input 
+            type="password" 
+            name="password" 
+            placeholder="Senha" 
+            onChange={(e)=> setPassword(e.target.value)}
+            required 
+          />
+          
+          <button 
+            type="submit" 
+            className="btn-primary" 
+            disabled={isLoading}
+          >
+            {isLoading ? <span className="loader"></span> : "Cadastrar"}
+          </button>
 
-      </form>
+          <Link to="/entrar" className="link-redireciona">Entrar</Link>
+        </form>
+      </div>
     </div>
   );
-};
+}
+
 export default CadastrarUser;

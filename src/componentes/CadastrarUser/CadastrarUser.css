@@ -1,85 +1,111 @@
+.entrar-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
 
-/* Container principal da página de login */
-.entrar-container {
+
+#form-cliente-cadastrar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Alinha no topo */
-  min-height: 100vh;
-  padding-top: 60px; /* Espaço suficiente abaixo do header */
-  background-color: #fff9f9;
-}
-
-
-/* Espaço entre o header fixo e o formulário */
-h2 {
-  margin-top: 100px; 
-  color: #b8001f;
-  font-weight: 700;
-}
-
-/* Card do formulário */
-#form-cliente {
-  background-color: #b8001f; /* mesma cor principal */
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  width: 340px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito hover suave no card */
-form:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(184, 0, 31, 0.4);
-}
-
-/* Inputs */
-#form-cliente input {
-  padding: 12px;
-  border-radius: 10px;
-  border: 2px solid #ff6767;
-  outline: none;
-  background-color: #fff;
-  color: #b8001f;
-  font-weight: 500;
-}
-
-#form-cliente input::placeholder {
-  color: #b8001f;
-  opacity: 0.7;
-}
-
-/* Botão de login */
-.btn-primary {
+  justify-content: center;
   background-color: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-header h2 {
   color: #b8001f;
-  padding: 12px;
-  border: 2px solid #ff6767;
-  border-radius: 10px;
   font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+#form-cliente-cadastrar input {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #DDDDDD;
+  border-radius: 25px;
+  padding: 14px 20px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#form-cliente-cadastrar input::placeholder {
+  color: black;
+  opacity: 0.8;
+}
+
+#form-cliente-cadastrar input:focus {
+  outline: 2px solid red;
+}
+
+.btn-primary {
+  background-color: #b8001f;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
 }
 
 .btn-primary:hover {
-  background-color: #b8001fa0;
-  color: #fff0f0;
+  background-color: #a0001a;
 }
 
-/* Link de cadastro */
 .link-redireciona {
-  text-align: center;
-  color: #fff0f0;
-  font-size: 0.9rem;
+  color: #cf3737;
   text-decoration: none;
-  transition: 0.3s;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.3s ease;
+  margin-top: 20px;
+  display: inline-block;
 }
 
 .link-redireciona:hover {
-  text-decoration: underline;
-  color: #ffbaba;
+  color: #ff6767;
+}
+
+.loader {
+  border: 3px solid #ffffff;
+  border-top: 3px solid #b8001f;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn-primary:disabled {
+  background-color: #a0001a;
+  cursor: not-allowed;
+  opacity: 0.8;
 }

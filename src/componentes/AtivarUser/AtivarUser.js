@@ -44,7 +44,7 @@ function AtivarUser() {
   return (
     <div>
       <h2>Insira o Código recebido no WhatsApp!</h2>
-      <form id="form-cliente" onSubmit={handleSubmit}>
+      <form id="form-cliente-ativar" onSubmit={handleSubmit}>
         <input 
           type="text" 
           name="cnpj"
