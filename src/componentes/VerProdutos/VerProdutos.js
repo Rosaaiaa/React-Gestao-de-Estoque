@@ -84,49 +84,54 @@ function VerProdutos() {
   }
 
   async function salvarAlteracoes() {
-    if (!produtoEditando.name || !produtoEditando.price || !produtoEditando.quantity) {
-      alert("Preencha todos os campos obrigatórios!");
-      return;
-    }
-
-    try {
-      const token = localStorage.getItem("authToken");
-      const formData = new FormData();
-
-      formData.append("name", produtoEditando.name);
-      formData.append("price", produtoEditando.price);
-      formData.append("quantity", produtoEditando.quantity);
-
-      if (produtoEditando.image instanceof File) {
-        formData.append("image", produtoEditando.image);
-      }
-
-      const response = await fetch(`${API_URL}/products/${produtoEditando.id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(data.mensagem || "Produto atualizado com sucesso!");
-        setProdutos(
-          produtos.map((p) =>
-            p.id === produtoEditando.id ? { ...p, ...produtoEditando } : p
-          )
-        );
-        fecharModal();
-      } else {
-        alert(data.erro || "Erro ao atualizar produto.");
-      }
-    } catch (error) {
-      console.error("Erro ao atualizar produto:", error);
-      alert("Erro ao conectar com o servidor.");
-    }
+  if (!produtoEditando.name || !produtoEditando.price || !produtoEditando.quantity) {
+    alert("Preencha todos os campos obrigatórios!");
+    return;
   }
+
+  try {
+    const token = localStorage.getItem("authToken");
+
+    const formData = new FormData();
+    formData.append("name", produtoEditando.name);
+    formData.append("price", produtoEditando.price);
+    formData.append("quantity", produtoEditando.quantity);
+
+    if (produtoEditando.image instanceof File) {
+      formData.append("image", produtoEditando.image);
+    }
+
+    const response = await fetch(`${API_URL}/products/${produtoEditando.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Produto atualizado com sucesso!");
+
+      const produtoAtualizado = data.produto;
+
+      setProdutos(
+        produtos.map((p) =>
+          p.id === produtoAtualizado.id ? produtoAtualizado : p
+        )
+      );
+
+      fecharModal();
+    } else {
+      alert(data.erro || "Erro ao atualizar produto.");
+    }
+  } catch (error) {
+    console.error("Erro ao atualizar produto:", error);
+    alert("Erro ao conectar com o servidor.");
+  }
+}
+
 
   return (
     <div>
