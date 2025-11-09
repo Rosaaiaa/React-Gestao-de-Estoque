@@ -12,12 +12,12 @@ function VerProdutos() {
   const [produtoEditando, setProdutoEditando] = useState(null);
 
   useEffect(() => {
-      const token = localStorage.getItem("authToken");
+        const token = localStorage.getItem("authToken");
 
-      if (!token) {
-      alert("Você precisa estar logado para visualizar seus produtos.");
-      navigate("/entrar");
-      return;
+        if (!token) {
+        alert("Você precisa estar logado para visualizar seus produtos.");
+        navigate("/entrar");
+        return;
       }
 
     async function fetchProdutos() {
@@ -222,17 +222,21 @@ function VerProdutos() {
               }
             />
 
-            <label>Imagem (URL):</label>
+            <label htmlFor="image-upload" className="file-label">
+            Escolher nova imagem (opcional)
             <input
-              type="text"
-              value={produtoEditando.image}
+              id="image-upload"
+              type="file"
+              name="image"
+              accept="image/*"
               onChange={(e) =>
                 setProdutoEditando({
                   ...produtoEditando,
-                  image: e.target.value,
+                  image: e.target.files[0],
                 })
               }
             />
+          </label>
 
             <div className="modal-buttons">
               <button className="btn-salvar" onClick={salvarAlteracoes}>

@@ -152,6 +152,15 @@
   margin-top: 1.5rem;
 }
 
+.file-label:hover {
+  background-color: #d9deda;
+}
+
+.file-label input[type="file"] {
+  display: none;
+}
+
+
 .btn-salvar,
 .btn-cancelar {
   flex: 1;
