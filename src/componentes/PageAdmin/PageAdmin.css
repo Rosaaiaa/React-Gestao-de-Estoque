@@ -27,7 +27,6 @@
 .report-card {
   flex: 1; 
   margin: 50px;
-  height: 500px;
   min-width: 300px;
   
   background-color: #ffffff;
@@ -44,7 +43,8 @@
   color: #333;
 }
 
-.report-card canvas {
-  width: 100% !important;
-  height: auto !important; 
+.chart-container {
+  position: relative;
+  height: 350px; 
+  width: 100%;
 }

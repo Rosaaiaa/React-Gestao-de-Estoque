@@ -82,8 +82,11 @@ function ReportTopProducts () {
         return <div>Carregando relatório...</div>;
     }
 
-    // 6. Renderizar o gráfico
-    return <Bar options={options} data={chartData} />;
+    return (
+        <div className="chart-container">
+            <Bar options={options} data={chartData} />
+        </div>
+    );
 
 };
 
