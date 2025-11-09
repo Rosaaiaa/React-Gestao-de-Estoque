@@ -26,7 +26,7 @@ function AtivarUser() {
       alert(result.mensagem || result.erro);
 
       if (response.ok) {
-        navigate('/');
+        navigate('/admin');
       }
 
     } catch (error) {
