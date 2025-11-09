@@ -19,12 +19,10 @@ function LateralBar(){
                 <li className="container-categoria">
                     <h3>Vendas</h3>
                     <ul className="submenu">
-                        <li><a href="/ver-vendas">Ver Vendas</a></li>
-                        <li><a href="/realizar-vendas">Realizar Venda</a></li>
+                        <li><a href="/vendas">Ver Vendas</a></li>
+                        <li><a href="/venda">Realizar Venda</a></li>
                     </ul>
                 </li>
-
-                
             </ul>
         </nav>
     );
