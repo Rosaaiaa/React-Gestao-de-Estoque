@@ -1,6 +1,7 @@
 import "./PageAdmin.css"
 import LateralBar from "../LateralBar/LateralBar";
 import ReportSaleByProduct from "../ReportSaleByProduct/ReportSaleByProduct";
+import ReportTopProducts from "../ReportTopProducts/ReportTopProducts";
 
 function PageAdmin() {
 
@@ -14,13 +15,13 @@ function PageAdmin() {
 
                 <div className="reports-container">
                 <div className="report-card">
-                    <h2>Relatório de Vendas por Produto</h2>
+                    <h2>Quantidade de Vendas por Produto</h2>
                     <ReportSaleByProduct /> 
                 </div>
 
                 <div className="report-card">
-                    <h2>Relatório 2 (Em breve)</h2>
-                    <p>Conteúdo do segundo relatório.</p>
+                    <h2>Top 3 Produtos com maior Faturamento</h2>
+                    <ReportTopProducts></ReportTopProducts>
                 </div>
                 </div>
             </div>
