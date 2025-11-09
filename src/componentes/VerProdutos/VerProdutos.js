@@ -91,22 +91,31 @@ function VerProdutos() {
 
     try {
       const token = localStorage.getItem("authToken");
+      const formData = new FormData();
+
+      formData.append("name", produtoEditando.name);
+      formData.append("price", produtoEditando.price);
+      formData.append("quantity", produtoEditando.quantity);
+
+      if (produtoEditando.image instanceof File) {
+        formData.append("image", produtoEditando.image);
+      }
+
       const response = await fetch(`${API_URL}/products/${produtoEditando.id}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
-        body: JSON.stringify(produtoEditando),
+        body: formData,
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        alert("Produto atualizado com sucesso!");
+        alert(data.mensagem || "Produto atualizado com sucesso!");
         setProdutos(
           produtos.map((p) =>
-            p.id === produtoEditando.id ? produtoEditando : p
+            p.id === produtoEditando.id ? { ...p, ...produtoEditando } : p
           )
         );
         fecharModal();
