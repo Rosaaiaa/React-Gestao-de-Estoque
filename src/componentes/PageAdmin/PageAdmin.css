@@ -18,17 +18,18 @@
 
 
 .reports-container {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  max-width: 1120px;
   gap: 20px; 
   margin-top: 20px;
+  width: 100%;
 }
 
-.report-card {
-  flex: 1; 
+.report-card { 
   margin: 50px;
-  min-width: 300px;
-  
+  width: 100%;
   background-color: #ffffff;
   border: 1px solid #ddd;
   border-radius: 8px;
