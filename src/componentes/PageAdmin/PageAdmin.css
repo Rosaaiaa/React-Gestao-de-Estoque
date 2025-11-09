@@ -26,6 +26,8 @@
 
 .report-card {
   flex: 1; 
+  margin: 50px;
+  height: 400px;
   min-width: 300px;
   
   background-color: #ffffff;
