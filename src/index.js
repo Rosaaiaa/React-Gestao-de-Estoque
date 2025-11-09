@@ -12,7 +12,7 @@ import AtivarUser from './componentes/AtivarUser/AtivarUser';
 import PageAdmin from './componentes/PageAdmin/PageAdmin';
 import CadastroProduto from './componentes/CadastroProduto/CadastroProduto';
 import VerProdutos from './componentes/VerProdutos/VerProdutos';
-import RealizarVendas from './componentes/RealizarVendas/RealizarVendas';
+
 
 
 
@@ -28,7 +28,6 @@ root.render(
           <Route path='/admin' element={<PageAdmin/>}/>
           <Route path="/cadastro-produto" element={<CadastroProduto />} />
           <Route path='/produtos' element={<VerProdutos />} />
-          <Route path='/realizar-vendas' element={<RealizarVendas />} />
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
