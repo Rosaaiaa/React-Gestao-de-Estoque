@@ -14,6 +14,7 @@ import CadastroProduto from './componentes/CadastroProduto/CadastroProduto';
 import VerProdutos from './componentes/VerProdutos/VerProdutos';
 import RealizarVendas from './componentes/RealizarVendas/RealizarVendas'
 import VerVendas from './componentes/VerVendas/VerVendas';
+import ReportSaleByProduct from './componentes/ReportSaleByProduct/ReportSaleByProduct';
 
 
 
@@ -32,6 +33,7 @@ root.render(
           <Route path='/produtos' element={<VerProdutos />} />
           <Route path='/realizar-vendas' element={<RealizarVendas/>} />
           <Route path='/ver-vendas' element={<VerVendas/>} />
+          <Route path='/sale-by-product' element={<ReportSaleByProduct/>}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
