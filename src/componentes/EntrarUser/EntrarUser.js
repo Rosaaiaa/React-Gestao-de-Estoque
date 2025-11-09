@@ -29,7 +29,7 @@ function EntrarUser() {
         if (result.access_token) {
           localStorage.setItem('authToken', result.access_token);
         }
-        navigate('/');
+        navigate('/admin');
       } else {
         alert(result.mensagem || result.erro || "Falha no login.");
       }
