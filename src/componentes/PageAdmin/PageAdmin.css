@@ -1,303 +1,57 @@
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto Mono", monospace;
-    font-weight: bold;
+/* Estilo geral do layout (exemplo) */
+.dashboard-layout {
+  display: flex; /* Para sidebar e conteúdo principal lado a lado */
+  min-height: 100vh;
 }
 
-body {
-    height: 200vh;    
+.sidebar {
+  width: 200px; /* Largura da sua sidebar */
+  background-color: #f0f0f0;
+  padding: 20px;
 }
 
-nav.menu-lateral {
-    width: 75px;
-    height: 100%;
-    background-color: #d78346;
-    padding: 25px 0 40px 1%;
-    position:fixed;
-    box-shadow: 3px 0 0 #fde4d2;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    transition: .2s;
+.main-content {
+  flex-grow: 1; /* Ocupa o resto do espaço horizontal */
+  padding: 20px;
+  background-color: #ffffff;
 }
 
-nav.menu-lateral:hover{
-    width: 300px;
+/* Estilos para os cartões de relatório */
+.reports-container {
+  display: flex; /* Para que os cartões fiquem lado a lado */
+  flex-wrap: wrap; /* Quebra para a linha de baixo se não houver espaço */
+  gap: 20px; /* Espaçamento entre os cartões */
+  margin-top: 20px;
 }
 
-.btn-expandir {
-    display: flex;
-    width: 100%;
-    padding-left: 10px;
+.report-card {
+  /*
+    Isso é crucial:
+    - flex: 1; fará com que o cartão tente ocupar metade do espaço disponível.
+    - min-width: 400px; garante que ele não fique muito pequeno.
+    - max-width: calc(50% - 10px); garante que ele não ultrapasse 50%
+      e considera o gap.
+  */
+  flex: 1; /* Faz os cards tentarem ocupar o mesmo espaço */
+  min-width: 300px; /* Largura mínima para o card */
+  max-width: calc(50% - 10px); /* Ocupa metade da largura do container pai, subtraindo metade do gap */
+  
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
 }
 
-.btn-expandir > i{
-    color: #ffffff;
-    font-size: 24px;
-    cursor: pointer;
+.report-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-#logo-menu {
-    width: 200px;
-    padding: 0px 0 18px 53px;
-}
-
-ul{
-    height: 100%;
-    list-style-type: none;
-}
-
-ul li.item-menu{
-    transition: .2s;
-}
-
-ul li.item-menu:hover{
-    background: #ffe1cc;
-}
-
-ul li.item-menu a{
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 4px 6%;
-    display: flex;
-    line-height: 40px;
-}
-ul li.item-menu a:hover{
-    color:#d78346
-}
-
-ul li.item-menu a .txt-link {
-    margin-left: 40px;
-}
-
-ul li.item-menu a .icon > i{
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.bloco-pesquisar {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f1a36b;
-    border: 2px solid #ffffff;
-    color:#ffffff;
-    border-radius: 20px;
-}
-.bloco-pesquisar input {
-    border: none;
-    outline: none;
-    background-color: #f1a36b;
-    color: #ffffff;
-}
-
-.bloco-pesquisar input::placeholder{
-    color:#ffffff
-}
-
-
-main {
-    margin-left: 100px;
-    height: 200vh;
-}
-
-#nome {
-    margin-left: 10px;
-    margin-bottom: 20px;
-    color: #d78346;
-}
-
-#banner {
-    margin-left: 10px;
-    width: 98%;
-    height: auto;
-    border-radius: 20px;
-}
-
-.bloco-principal {
-    margin: 10px;
-}
-
-.titulo {
-    width: 100%;
-    padding: 10px;
-    color: #d78346;
-    background-color: #ffffff;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    
-}
-
-.bloco-evento {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 300px;
-    font-family: Arial, sans-serif;
-    text-align: left;
-}
-
-.imagem-evento {
-    width: 100%;
-    height: auto;
-}
-
-.detalhes-evento {
-    padding: 15px;
-}
-
-.detalhes-evento h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.detalhes-evento p {
-    color: #666;
-    margin: 5px 0;
-}
-
-footer {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: #d78346;
-    min-height: 100px;
-    bottom: 0%;
-}
-
-#logo-footer {
-    width: 120px;
-    padding: 25px 0 18px 0;
-    margin: 0 300px;
-}
-
-#container-footer {
-    margin-left: 80px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-}
-
-.link-footer {
-    text-decoration: none;
-    color: #ffffff;
-}
-
-#link-div{
-    display: flex;
-    flex-direction: row;
-    gap: 22px;
-}
-
-#container-footer p {
-    font-family: "Roboto Mono", monospace;
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: 200;
-}
-
-
-table{
-    width:98%;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    text-align: left;
-    padding: 10px;
-}
-
-
-th {
-    height: 40px;
-    font-size: 1.25rem;
-    font-weight: bolder;
-}
-
-.identificar-coluna {
-    color: #d78346;
-    justify-content: center;
-}
-
-.enderecobutao{
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    background-color: #d78346;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.enderecobutao:hover{
-    background-color: #a15c2a;
-}
-
-#popup {
-    display: none;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 20px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-#btn_sim{
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    background-color: #d78346;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer; 
-}
-
-#btn_nao{
-    margin-top: 5px;
-    color: #fff;
-    border: none;
-    background-color: #d78346;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer; 
-}
-
-#overlay {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-#titulo_logout {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#logout {
-    cursor: pointer;
-    height: 30px;
-    margin-right: 22px;
-    margin-bottom: 15px;
+/* Opcional: Estilo para o gráfico em si, se precisar de ajustes finos */
+.report-card canvas {
+  width: 100% !important; /* Garante que o canvas ocupa 100% do seu pai */
+  height: auto !important; /* Mantém a proporção */
 }
