@@ -236,12 +236,12 @@ function VerProdutos() {
 
             {produtoEditando.preview && (
               <div className="image-preview">
+                <p>Imagem selecionada:</p>
                 <img
                   src={produtoEditando.preview}
                   alt="Prévia"
                   className="preview-img"
                 />
-                <p>Imagem selecionada:</p>
               </div>
             )}
 
