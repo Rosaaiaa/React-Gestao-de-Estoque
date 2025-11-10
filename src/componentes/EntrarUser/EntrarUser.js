@@ -16,6 +16,7 @@ function EntrarUser() {
 
     try {
       setIsLoading(true);
+      localStorage.removeItem('authToken');
       const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -24,11 +25,9 @@ function EntrarUser() {
 
       const result = await response.json();
 
-      if (response.ok) {
+      if (response.ok && result.access_token) {
+        localStorage.setItem('authToken', result.access_token);
         alert("Login realizado com sucesso!");
-        if (result.access_token) {
-          localStorage.setItem('authToken', result.access_token);
-        }
         navigate('/admin');
       } else {
         alert(result.mensagem || result.erro || "Falha no login.");
