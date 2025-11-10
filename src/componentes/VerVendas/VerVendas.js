@@ -79,11 +79,15 @@ function VerVendas() {
                     <strong>Data:</strong> {formatarData(venda.created_at)}
                   </p>
                   <p>
-                    <strong>Preço:</strong> R${" "}
+                    <strong>Preço unitário:</strong> R${" "}
                     {Number(venda.price_at_sale).toFixed(2)}
                   </p>
                   <p>
                     <strong>Qtd:</strong> {venda.quantity}
+                  </p>
+                  <p>
+                    <strong>Preço Total</strong> R${" "}
+                    {(Number(venda.price_at_sale)* Number(venda.quantity)).toFixed(2)}
                   </p>
                 </div>
               ))}
