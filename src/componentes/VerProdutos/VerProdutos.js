@@ -221,14 +221,29 @@ function VerProdutos() {
                 type="file"
                 name="image"
                 accept="image/*"
-                onChange={(e) =>
-                  setProdutoEditando({
-                    ...produtoEditando,
-                    image: e.target.files[0],
-                  })
-                }
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setProdutoEditando({
+                      ...produtoEditando,
+                      image: file,
+                      preview: URL.createObjectURL(file),
+                    });
+                  }
+                }}
               />
             </label>
+
+            {produtoEditando.preview && (
+              <div className="image-preview">
+                <img
+                  src={produtoEditando.preview}
+                  alt="Prévia"
+                  className="preview-img"
+                />
+                <p>Imagem selecionada:</p>
+              </div>
+            )}
 
             <div className="modal-buttons">
               <button className="btn-salvar" onClick={salvarAlteracoes}>
