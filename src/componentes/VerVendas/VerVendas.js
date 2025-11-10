@@ -22,8 +22,8 @@ function VerVendas() {
     async function fetchVendas() {
       try {
         const token = localStorage.getItem("authToken");
-        
-        const response = await fetch(`${API_URL}/sales`, {  
+
+        const response = await fetch(`${API_URL}/sales`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -32,7 +32,7 @@ function VerVendas() {
         const data = await response.json();
 
         if (response.ok) {
-          setVendas(data.vendas || []); 
+          setVendas(data.vendas || []);
         } else {
           alert(data.erro || "Erro ao buscar vendas.");
         }
@@ -49,19 +49,18 @@ function VerVendas() {
 
   const formatarData = (dataISO) => {
     return new Date(dataISO).toLocaleString("pt-BR", {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
-
 
   return (
     <div>
       <Header />
-      <div className="ver-vendas-page"> 
+      <div className="ver-vendas-page">
         <div className="ver-vendas-container">
           <h2>Histórico de Vendas</h2>
 
@@ -70,23 +69,21 @@ function VerVendas() {
           ) : vendas.length === 0 ? (
             <p className="sem-vendas">Nenhuma venda registrada.</p>
           ) : (
-
             <div className="vendas-list">
               {vendas.map((venda) => (
                 <div key={venda.id} className="venda-card">
-
-                  <h3>Produto: {venda.product_name}</h3>
+                  <p>
+                    <strong>Produto:</strong> {venda.product_name}
+                  </p>
                   <p>
                     <strong>Data:</strong> {formatarData(venda.created_at)}
                   </p>
                   <p>
-                    <strong>Preço na Venda:</strong> R$ {Number(venda.price_at_sale).toFixed(2)}
+                    <strong>Preço:</strong> R${" "}
+                    {Number(venda.price_at_sale).toFixed(2)}
                   </p>
                   <p>
-                    <strong>Quantidade:</strong> {venda.quantity}
-                  </p>
-                  <p>
-                    <strong>ID da Venda:</strong> {venda.id}
+                    <strong>Qtd:</strong> {venda.quantity}
                   </p>
                 </div>
               ))}
