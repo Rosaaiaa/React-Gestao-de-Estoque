@@ -13,6 +13,7 @@ import PageAdmin from './componentes/PageAdmin/PageAdmin';
 import CadastroProduto from './componentes/CadastroProduto/CadastroProduto';
 import VerProdutos from './componentes/VerProdutos/VerProdutos';
 import VerVendas from './componentes/VerVendas/VerVendas';
+import RealizarVenda from './componentes/RealizarVenda/RealizarVenda';
 
 
 
@@ -30,6 +31,7 @@ root.render(
           <Route path="/cadastro-produto" element={<CadastroProduto />} />
           <Route path='/produtos' element={<VerProdutos />} />
           <Route path='/vendas' element={<VerVendas/>}/>
+          <Route path='/realizar-venda' element={<RealizarVenda/>}/>
         </Routes>
     </BrowserRouter>
   </React.StrictMode>
