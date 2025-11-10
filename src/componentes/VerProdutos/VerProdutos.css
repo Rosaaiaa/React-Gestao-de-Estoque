@@ -200,3 +200,42 @@
     opacity: 1;
   }
 }
+.botoes-produto {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+}
+
+.btn-editar,
+.btn-inativar {
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-editar {
+  background-color: #007bff;
+}
+
+.btn-editar:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+.btn-inativar {
+  background-color: #dc3545;
+}
+
+.btn-inativar:hover {
+  background-color: #b02a37;
+  transform: translateY(-1px);
+}
