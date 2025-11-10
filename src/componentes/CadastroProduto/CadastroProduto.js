@@ -129,7 +129,6 @@ function CadastroProduto() {
               name="image"
               accept="image/*"
               onChange={handleImageChange}
-              required
               ref={imageInputRef}
             />
           </label>
