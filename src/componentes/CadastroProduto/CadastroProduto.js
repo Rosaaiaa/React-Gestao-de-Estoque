@@ -14,6 +14,7 @@ function CadastroProduto() {
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const imageInputRef = useRef(null);
+  const formRef = useRef(null);
 
   async function enviar_cadastro() {
     const token = localStorage.getItem("authToken");
@@ -71,13 +72,20 @@ function CadastroProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!image) {
+    if (!image && imageInputRef.current) {
+      imageInputRef.current.setCustomValidity("Selecione uma imagem.");
+    }
+
+    if (formRef.current && !formRef.current.checkValidity()) {
+      formRef.current.reportValidity();
       if (imageInputRef.current) {
-        imageInputRef.current.setCustomValidity("Selecione uma imagem.");
-        imageInputRef.current.reportValidity();
         imageInputRef.current.setCustomValidity("");
       }
       return;
+    }
+
+    if (imageInputRef.current) {
+      imageInputRef.current.setCustomValidity("");
     }
 
     enviar_cadastro();
@@ -91,6 +99,7 @@ function CadastroProduto() {
           id="form-produto"
           onSubmit={handleSubmit}
           encType="multipart/form-data"
+          ref={formRef}
         >
           <div className="form-header">
             <h2>Cadastrar Produto</h2>
