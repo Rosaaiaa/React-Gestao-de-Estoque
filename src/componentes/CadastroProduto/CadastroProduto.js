@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./CadastroProduto.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import HeaderInside from "../HeaderInside/HeaderInside";
 
 function CadastroProduto() {
@@ -13,6 +13,7 @@ function CadastroProduto() {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const imageInputRef = useRef(null);
 
   async function enviar_cadastro() {
     const token = localStorage.getItem("authToken");
@@ -59,6 +60,9 @@ function CadastroProduto() {
     setImage(file);
     if (file) {
       setPreview(URL.createObjectURL(file));
+      if (imageInputRef.current) {
+        imageInputRef.current.setCustomValidity("");
+      }
     } else {
       setPreview(null);
     }
@@ -66,6 +70,16 @@ function CadastroProduto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!image) {
+      if (imageInputRef.current) {
+        imageInputRef.current.setCustomValidity("Selecione uma imagem.");
+        imageInputRef.current.reportValidity();
+        imageInputRef.current.setCustomValidity("");
+      }
+      return;
+    }
+
     enviar_cadastro();
   };
 
@@ -117,6 +131,7 @@ function CadastroProduto() {
               accept="image/*"
               onChange={handleImageChange}
               required
+              ref={imageInputRef}
             />
           </label>
 
