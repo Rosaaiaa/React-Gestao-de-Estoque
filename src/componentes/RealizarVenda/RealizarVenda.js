@@ -33,13 +33,7 @@ function RealizarVenda() {
 
                 if (response.ok) {
                     const data = await response.json();
-
-                    if (Array.isArray(data)) {
-                        setProducts(data);
-                    } else {
-                        console.error("A API de produtos não retornou um array:", data);
-                        alert('Erro: A resposta da API de produtos não é válida.');
-                    }
+                    setProducts(data.produtos);
 
                 } else {
                     const errorData = await response.json();
@@ -87,7 +81,7 @@ function RealizarVenda() {
                 alert(`Venda #${data.id} realizada com sucesso!`);
                 setSelectedProductId('');
                 setQuantity('');
-                // Seria bom recarregar os produtos aqui
+                
             } else {
                 alert(`Erro: ${data.erro || 'Ocorreu um problema'}`);
             }
