@@ -48,7 +48,9 @@ function VerVendas() {
   }, [navigate]);
 
   const formatarData = (dataISO) => {
-    return new Date(dataISO).toLocaleString("pt-BR", {
+    const original = new Date(dataISO);
+    const ajustada = new Date(original.getTime() - 3 * 60 * 60 * 1000);
+    return ajustada.toLocaleString("pt-BR", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
