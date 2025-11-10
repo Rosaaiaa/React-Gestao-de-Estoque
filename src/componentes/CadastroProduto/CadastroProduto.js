@@ -11,6 +11,7 @@ function CadastroProduto() {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function enviar_cadastro() {
@@ -52,6 +53,16 @@ function CadastroProduto() {
       setIsLoading(false);
     }
   }
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    if (file) {
+      setPreview(URL.createObjectURL(file));
+    } else {
+      setPreview(null);
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -104,10 +115,17 @@ function CadastroProduto() {
               type="file"
               name="image"
               accept="image/*"
-              onChange={(e) => setImage(e.target.files[0])}
+              onChange={handleImageChange}
               required
             />
           </label>
+
+          {preview && (
+            <div className="image-preview">
+              <p>Imagem selecionada:</p>
+              <img src={preview} alt="Prévia" className="preview-img" />
+            </div>
+          )}
 
           <button
             type="submit"

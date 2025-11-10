@@ -116,3 +116,22 @@
   cursor: not-allowed;
   opacity: 0.8;
 }
+
+.image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.image-preview p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.preview-img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
