@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./VerVendas.css";
-import Header from "../Header/Header";
+import HeaderInside from "../HeaderInside/HeaderInside";
 
 function VerVendas() {
   const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
@@ -59,7 +59,7 @@ function VerVendas() {
 
   return (
     <div>
-      <Header />
+      <HeaderInside />
       <div className="ver-vendas-page">
         <div className="ver-vendas-container">
           <h2>Histórico de Vendas</h2>

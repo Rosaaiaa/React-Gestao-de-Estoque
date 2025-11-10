@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Pencil, Ban } from "lucide-react";
 import "./VerProdutos.css";
-import Header from "../Header/Header";
+import HeaderInside from "../HeaderInside/HeaderInside";
 
 function VerProdutos() {
   const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
@@ -133,7 +133,7 @@ function VerProdutos() {
 
   return (
     <div>
-      <Header />
+      <HeaderInside />
       <div className="ver-produtos-page">
         <div className="ver-produtos-container">
           <h2>Meus Produtos</h2>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./CadastroProduto.css";
 import { useState } from "react";
-import Header from "../Header/Header";
+import HeaderInside from "../HeaderInside/HeaderInside";
 
 function CadastroProduto() {
   const API_URL = "https://gestao-de-estoque-fu7n.onrender.com";
@@ -71,7 +71,7 @@ function CadastroProduto() {
 
   return (
     <div>
-      <Header />
+      <HeaderInside />
       <div className="entrar-page">
         <form
           id="form-produto"
