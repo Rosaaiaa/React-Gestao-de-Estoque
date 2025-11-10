@@ -11,9 +11,16 @@
 }
 
 .conteudo {
-  margin-left: 270px; 
+  margin-left: 260px; 
   padding: 20px;
   background-color: #ffffff;
+  color: #b8001f;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteudo h1 {
+    margin-left: 520px;
 }
 
 
@@ -28,7 +35,7 @@
 }
 
 .report-card { 
-  margin: 50px;
+  margin: 20px 50px 0 50px;
   width: 100%;
   background-color: #ffffff;
   border: 1px solid #ddd;
