@@ -10,7 +10,8 @@ function RealizarVenda() {
     const [selectedProductId, setSelectedProductId] = useState('');
     const [quantity, setQuantity] = useState('');
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true); // Para o load inicial
+    const [isSubmitting, setIsSubmitting] = useState(false); // Para o envio do form
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -32,7 +33,14 @@ function RealizarVenda() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setProducts(data);
+
+                    if (Array.isArray(data)) {
+                        setProducts(data);
+                    } else {
+                        console.error("A API de produtos não retornou um array:", data);
+                        alert('Erro: A resposta da API de produtos não é válida.');
+                    }
+
                 } else {
                     const errorData = await response.json();
                     alert(`Erro ao buscar produtos: ${errorData.erro || 'Tente novamente'}`);
@@ -49,11 +57,12 @@ function RealizarVenda() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('');
+        setIsSubmitting(true);
 
         const token = localStorage.getItem('authToken');
         if (!token) {
             alert('Erro: Você não está logado.');
+            setIsSubmitting(false);
             return;
         }
 
@@ -78,12 +87,14 @@ function RealizarVenda() {
                 alert(`Venda #${data.id} realizada com sucesso!`);
                 setSelectedProductId('');
                 setQuantity('');
-
+                // Seria bom recarregar os produtos aqui
             } else {
                 alert(`Erro: ${data.erro || 'Ocorreu um problema'}`);
             }
         } catch (error) {
             alert('Erro de conexão. Tente novamente.');
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -93,7 +104,7 @@ function RealizarVenda() {
 
     return (
         <>
-            <HeaderInside></HeaderInside>
+            <HeaderInside />
             <div className="entrar-page">
                 <form id="form-venda" onSubmit={handleSubmit}>
 
@@ -131,8 +142,8 @@ function RealizarVenda() {
                         />
                     </div>
 
-                    <button type="submit" className="btn-primary" disabled={isLoading}>
-                        {isLoading ? <span className="loader"></span> : 'Vender'}
+                    <button type="submit" className="btn-primary" disabled={isSubmitting}>
+                        {isSubmitting ? <span className="loader"></span> : 'Vender'}
                     </button>
                 </form>
             </div>
