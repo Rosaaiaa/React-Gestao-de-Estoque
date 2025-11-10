@@ -72,20 +72,9 @@ function CadastroProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!image && imageInputRef.current) {
-      imageInputRef.current.setCustomValidity("Selecione uma imagem.");
-    }
-
-    if (formRef.current && !formRef.current.checkValidity()) {
-      formRef.current.reportValidity();
-      if (imageInputRef.current) {
-        imageInputRef.current.setCustomValidity("");
-      }
+    if (!image) {
+      alert("Selecione uma imagem para o produto.");
       return;
-    }
-
-    if (imageInputRef.current) {
-      imageInputRef.current.setCustomValidity("");
     }
 
     enviar_cadastro();
