@@ -72,7 +72,8 @@ function CadastroProduto() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!image) {
+    const noImageSelected = !image || (imageInputRef.current && imageInputRef.current.files && imageInputRef.current.files.length === 0);
+    if (noImageSelected) {
       alert("Selecione uma imagem para o produto.");
       return;
     }
