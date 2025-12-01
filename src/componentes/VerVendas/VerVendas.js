@@ -28,6 +28,7 @@ function VerVendas() {
 
       if (response.ok) {
         alert("Venda inativada com sucesso!");
+        window.location.reload();
       } else {
         alert(data.erro || "Erro ao inativar venda.");
       }
