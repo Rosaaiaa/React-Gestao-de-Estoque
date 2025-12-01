@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Ban } from "lucide-react";
 import "./VerVendas.css";
 import HeaderInside from "../HeaderInside/HeaderInside";
 
@@ -9,6 +10,32 @@ function VerVendas() {
 
   const [vendas, setVendas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  async function inativarVenda(id) {
+    const confirmar = window.confirm("Deseja realmente inativar esta venda?");
+    if (!confirmar) return;
+
+    try {
+      const token = localStorage.getItem("authToken");
+      const response = await fetch(`${API_URL}/sales/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Venda inativada com sucesso!");
+      } else {
+        alert(data.erro || "Erro ao inativar venda.");
+      }
+    } catch (error) {
+      console.error("Erro ao inativar venda:", error);
+      alert("Erro ao conectar com o servidor.");
+    }
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("authToken");
@@ -91,6 +118,10 @@ function VerVendas() {
                     <strong>Preço Total</strong> R${" "}
                     {(Number(venda.price_at_sale)* Number(venda.quantity)).toFixed(2)}
                   </p>
+                  <button className="btn-icone btn-inativar" onClick={() => inativarVenda(venda.id)} title="Inativar venda">
+                    <Ban size={18} />
+                    <span>Inativar</span>
+                  </button>
                 </div>
               ))}
             </div>
